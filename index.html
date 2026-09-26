@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CareerPath — Find Your Direction | by Dheeraj</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ Intro loader ============ -->
+  <div id="introLoader">
+    <div class="intro-mark" id="introMark"></div>
+    <p class="intro-tagline">Find the path that actually fits you.</p>
+    <div class="intro-bar"><div class="intro-bar-fill"></div></div>
+    <p class="intro-credit">Designed by <span>Dheeraj</span></p>
+  </div>
+
+  <!-- ============ Greeting toast ============ -->
+  <div id="greetToast" class="greet-toast"></div>
+
+  <!-- ============ Exam detail modal ============ -->
+  <div id="examModal" class="modal-overlay">
+    <div class="modal-card">
+      <button id="modalClose" class="modal-close" aria-label="Close">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- ============ Premium animated tech background ============ -->
+  <canvas id="bgCanvas"></canvas>
+  <div class="grid-floor" aria-hidden="true"></div>
+
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="glow glow-3"></div>
+
+  <header class="topbar">
+    <a href="#home" class="brand">Career<span class="brand-accent">Path</span></a>
+    <nav class="nav-links">
+      <a href="#coverage">What we cover</a>
+      <a href="#exams">All exams</a>
+      <a href="#quiz" class="nav-cta">Start my path</a>
+    </nav>
+    <div class="brand-credit">Designed by <strong>Dheeraj</strong></div>
+  </header>
+
+  <main id="app">
+
+    <!-- ============ HERO ============ -->
+    <section id="home" class="page-section hero-section">
+      <div class="landing-inner reveal">
+        <p class="eyebrow-free">A guidance project for students who feel stuck</p>
+        <h1>Confused about what comes<br>after school or college?</h1>
+        <p class="lead">Answer a few honest questions — your stream, your stage, your interests — and get a complete, personalised map of careers and exams. Every engineering branch, medical path, commerce route and government exam here comes with <strong>full details</strong>: vacancies, salary, pattern, syllabus and eligibility, so you never need to search anywhere else.</p>
+        <a href="#quiz" class="btn-primary">Start my path</a>
+        <p class="landing-credit">Designed &amp; built by <strong>Dheeraj</strong> · Final Year Engineering Project</p>
+      </div>
+      <a href="#coverage" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+    </section>
+
+    <!-- ============ COVERAGE ============ -->
+    <section id="coverage" class="page-section">
+      <p class="eyebrow-free reveal">Built for every kind of student</p>
+      <h2 class="section-title reveal">Whatever stream you're in, there's a path mapped out</h2>
+      <div class="coverage-grid">
+        <div class="coverage-card reveal">
+          <div class="coverage-icon">⚙️</div>
+          <h3>Engineering</h3>
+          <p>Every major B.Tech branch — CSE, Mechanical, Civil, Electrical, ECE, Chemical — each with its own careers &amp; exams.</p>
+        </div>
+        <div class="coverage-card reveal">
+          <div class="coverage-icon">🩺</div>
+          <h3>Medical &amp; Science</h3>
+          <p>MBBS, BDS, Pharmacy, Nursing, Biotechnology and pure science routes via NEET and beyond.</p>
+        </div>
+        <div class="coverage-card reveal">
+          <div class="coverage-icon">📊</div>
+          <h3>Commerce &amp; Finance</h3>
+          <p>CA, CS, CMA, Banking, and B.Com/BBA career tracks, right through to MBA.</p>
+        </div>
+        <div class="coverage-card reveal">
+          <div class="coverage-icon">⚖️</div>
+          <h3>Arts, Law &amp; Design</h3>
+          <p>Civil services, law, journalism, design and teaching — humanities careers taken seriously.</p>
+        </div>
+        <div class="coverage-card reveal">
+          <div class="coverage-icon">🏛️</div>
+          <h3>Government Exams</h3>
+          <p>UPSC, SSC, Banking, Railways, Defence, GATE, State PSC — every exam with full inside details.</p>
+        </div>
+        <div class="coverage-card reveal">
+          <div class="coverage-icon">🏢</div>
+          <h3>Private Sector</h3>
+          <p>Real companies and industries that hire for every one of the paths above.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXAM DIRECTORY ============ -->
+    <section id="exams" class="page-section">
+      <p class="eyebrow-free reveal">Reference · browse anytime</p>
+      <h2 class="section-title reveal">The full government exam directory</h2>
+      <p class="lead reveal">Nearly every major government exam in India, grouped by category. <strong>Tap any exam</strong> to see its complete details — vacancies, salary, pattern, syllabus and more.</p>
+      <div id="examAccordion" class="accordion"></div>
+    </section>
+
+    <!-- ============ QUIZ ============ -->
+    <section id="quiz" class="page-section quiz-section">
+      <p class="eyebrow-free reveal">Your turn</p>
+      <h2 class="section-title reveal">Let's map your path</h2>
+      <div class="progress-path" id="progressPath"></div>
+      <div class="quiz-card" id="quizCard"></div>
+      <div class="quiz-nav">
+        <button id="backBtn" class="btn-ghost">Back</button>
+        <button id="nextBtn" class="btn-primary">Next</button>
+      </div>
+      <div class="burst" id="burst"></div>
+    </section>
+
+    <!-- ============ YOUR JOURNEY (flowchart recap) ============ -->
+    <section id="journey" class="page-section journey-section" style="display:none;">
+      <p class="eyebrow-free">You made it 🎉</p>
+      <h2 class="section-title" id="journeyHeading">Nice work, there!</h2>
+      <p class="lead" id="journeySub">Here's a quick look at everything you just told us.</p>
+      <div class="flow-wrap" id="flowWrap"></div>
+      <button id="journeyContinueBtn" class="btn-primary">Show my personalised path</button>
+    </section>
+
+    <!-- ============ RESULTS ============ -->
+    <section id="results" class="page-section results-section" style="display:none;">
+      <div class="results-header">
+        <p class="eyebrow-free" id="resultStream"></p>
+        <h2 class="section-title" id="resultTitle">Here's your path, <span id="resultName"></span></h2>
+        <p class="lead" id="resultNote"></p>
+      </div>
+      <div id="resultSections"></div>
+      <button id="restartBtn" class="btn-ghost">Start over</button>
+      <p class="landing-credit">Crafted with care by <strong>Dheeraj</strong> — hope this helps you find your direction.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">© 2026 CareerPath · Designed &amp; Developed by <strong>Dheeraj</strong></footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
